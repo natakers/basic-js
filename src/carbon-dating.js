@@ -19,6 +19,20 @@ const HALF_LIFE_PERIOD = 5730;
  */
 export default function dateSample(sampleActivity) {
   // throw new NotImplementedError('Not implemented');
-  return Math.ceil(Math.log(MODERN_ACTIVITY/Number(sampleActivity))*0.693/HALF_LIFE_PERIOD);
+  // console.log(typeof(Number(sampleActivity)));
+  // sampleActivity = +sampleActivity;
+  // console.log(sampleActivity);
+  if (typeof(sampleActivity) === 'string') {
+  	var a = Math.ceil(Math.log(MODERN_ACTIVITY/+sampleActivity)*HALF_LIFE_PERIOD/0.693);
+  	console.log(a);
+  	// if (isNaN(a)) {return false}
+  	if (Number.isInteger(a) && a>0) {
+  		return a;
+  	}
+
+  }
+  return false;
   // remove line with error and write your code here
 }
+
+// dateSample('ACTIVITY OVER 9000');
