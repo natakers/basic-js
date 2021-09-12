@@ -14,9 +14,16 @@ import { NotImplementedError } from '../extensions/index.js';
 export default function getSeason(date) {
   // throw new NotImplementedError('Not implemented');
 
-  if(!Number.isInteger(date.getMonth())) {
-  	return "Invalid date!" ;
-  }
+  // if(!Number.isInteger(date.getMonth())) {
+  // 	return "Invalid date!" ;
+  // }
+
+ //  try {
+ //  date.getMonth(); // может выбрасывать три вида исключений
+	// } catch (e) {
+ //  	if (e instanceof TypeError) {
+ //    	"Invalid date!" ;
+ //  	}
   if(!date) {
   	return 'Unable to determine the time of year!';
   }
