@@ -12,35 +12,32 @@ import { NotImplementedError } from '../extensions/index.js';
  * 
  */
 export default function getSeason(date) {
-  // throw new NotImplementedError('Not implemented');
 
-  // if(!Number.isInteger(date.getMonth())) {
-  // 	return "Invalid date!" ;
-  // }
-
- //  try {
- //  date.getMonth(); // может выбрасывать три вида исключений
-	// } catch (e) {
- //  	if (e instanceof TypeError) {
- //    	"Invalid date!" ;
- //  	}
   if(!date) {
   	return 'Unable to determine the time of year!';
   }
-  var a = date.getMonth();
+
+// let date = new Date();
+// console.log(Object.getOwnPropertyNames(date));
+// 
+ try {
+    date.getTime();
+    var a = date.getMonth();
   if (a == 11 || (0<=a && a<2)) {
-  	return "winter";
+   return "winter";
   }
     if (2<=a && a<5) {
-  	return "spring";
+   return "spring";
   }
     if (5<=a && a<8) {
-  	return "summer";
+   return "summer";
   }
     if (8<=a && a<11) {
-  	return "autumn|fall";
+   return "autumn|fall";
   }
-
-
-  // remove line with error and write your code here
+  } catch (error) {
+    throw new Error ('Invalid date!');
+  }
+  
+      
 }
