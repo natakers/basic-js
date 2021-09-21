@@ -26,9 +26,14 @@ export default function transform(arr) {
   	else {
   		if (arr[i] == '--double-next') {
         if (arr[i+1]) {
+          // if (typeof arr[i+2] != 'number') {
+            // i = i+2;
+          // }
+          // else {
   			result.push(arr[i+1]);
         result.push(arr[i+1]);
   			i++;
+      // }
       }
 
   		}
@@ -37,25 +42,34 @@ export default function transform(arr) {
   			result.pop();
   			result.push(arr[i-1]);
         result.push(arr[i-1]);
-  			i++;
+  			// i=i+2;
   			}
   		}
   		if (arr[i] == '--discard-next') {
          if (arr[i+1]) {
+          if (typeof arr[i+2] != 'number') {
+            i = i+2;
+          }
+          else {
   			i++;
+      }
       }
         // result.splice(i-1,1);
   			
   		}
   		if (arr[i] == '--discard-prev') {
   			if (result.length != 0 ) {
+          // if (typeof arr[i-2] != 'number') {
+            
+          // }
           result.splice(i-1,1);
-        	i--;
+        	// i--;
         }
   			
   		}
   	}
    }
+   console.log(result);
 return result;
   }
   
