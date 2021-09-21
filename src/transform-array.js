@@ -20,27 +20,38 @@ export default function transform(arr) {
   if (Array.isArray(arr)) {
   
    for (let i = 0; i<arr.length; i++) {
-  	if (typeof arr[i] === 'number' && arr[i]>0) {
+  	if (typeof arr[i] === 'number' && arr[i]>=0) {
   		result.push(arr[i]);
   	} 
   	else {
   		if (arr[i] == '--double-next') {
-  			result.push(arr[i+1]*2);
+        if (arr[i+1]) {
+  			result.push(arr[i+1]);
+        result.push(arr[i+1]);
   			i++;
+      }
 
   		}
   		if (arr[i] == '--double-prev') {
+        if (result.length != 0 ) {
   			result.pop();
-  			result.push(arr[i-1]*2);
+  			result.push(arr[i-1]);
+        result.push(arr[i-1]);
   			i++;
-  			
+  			}
   		}
-  		if (arr[i] === '--discard-next') {
+  		if (arr[i] == '--discard-next') {
+         if (arr[i+1]) {
   			i++;
+      }
+        // result.splice(i-1,1);
   			
   		}
   		if (arr[i] == '--discard-prev') {
-  			result.pop();
+  			if (result.length != 0 ) {
+          result.splice(i-1,1);
+        	i--;
+        }
   			
   		}
   	}
@@ -48,5 +59,5 @@ export default function transform(arr) {
 return result;
   }
   
-  else return "parameter must be an instance of the Array!";
+  else throw new NotImplementedError (" \'arr\' parameter must be an instance of the Array!");
 }
