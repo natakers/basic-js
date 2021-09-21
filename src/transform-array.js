@@ -20,7 +20,7 @@ export default function transform(arr) {
   if (Array.isArray(arr)) {
   
    for (let i = 0; i<arr.length; i++) {
-  	if (arr[i] > 0) {
+  	if (typeof arr[i] === 'number' && arr[i]>0) {
   		result.push(arr[i]);
   	} 
   	else {
@@ -45,7 +45,8 @@ export default function transform(arr) {
   		}
   	}
    }
-
+return result;
   }
-  return result;
+  
+  else return "parameter must be an instance of the Array!";
 }

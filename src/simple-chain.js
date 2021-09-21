@@ -5,24 +5,59 @@ import { NotImplementedError } from '../extensions/index.js';
  * 
  */
 export default {
+  // count: 0,
+  arr:[],
+  str: '',
+
   getLength() {
-    throw new NotImplementedError('Not implemented');
+    return this.arr.length;
+    // throw new NotImplementedError('Not implemented');
+    // return count;
     // remove line with error and write your code here
   },
-  addLink(/* value */) {
-    throw new NotImplementedError('Not implemented');
+  addLink(value) {
+    if (value === "()") {
+      this.arr.push("()");
+    }
+    this.value = value + '';
+    this.arr.push("( " + value + " )");
+    return this;
+    // throw new NotImplementedError('Not implemented');
+    // count++;
+    // return this.value = "(" + value + ")";  
     // remove line with error and write your code here
   },
-  removeLink(/* position */) {
-    throw new NotImplementedError('Not implemented');
+  removeLink(position) {
+    if (typeof position != 'number' || position>=this.arr.length || position<0) {
+      this.arr = [];
+      throw new NotImplementedError ("You can't remove incorrect link!");
+    }
+    // count--;
+    this.arr.splice(position-1, 1);
+    return this;
+
+    // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   },
   reverseChain() {
-    throw new NotImplementedError('Not implemented');
+    this.arr.reverse();
+    return this;
+    // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   },
   finishChain() {
-    throw new NotImplementedError('Not implemented');
+    this.str = '';
+    console.log(this.arr);
+    this.arr.forEach((item, index) =>{
+      if (index != this.arr.length-1) {
+        this.str = this.str + item  + '~~';
+      }
+      else this.str = this.str +  item ;
+    });
+    this.arr = [];
+    return this.str;
+    // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   }
 };
+

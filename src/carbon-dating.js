@@ -24,7 +24,7 @@ export default function dateSample(sampleActivity) {
   // console.log(sampleActivity);
   if (typeof(sampleActivity) === 'string') {
   	var a = Math.ceil(Math.log(MODERN_ACTIVITY/+sampleActivity)*HALF_LIFE_PERIOD/0.693);
-  	console.log(a);
+  	// console.log(a);
   	// if (isNaN(a)) {return false}
   	if (Number.isInteger(a) && a>0) {
   		return a;
