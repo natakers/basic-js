@@ -20,10 +20,10 @@ export default function transform(arr) {
   if (Array.isArray(arr)) {
   
    for (let i = 0; i<arr.length; i++) {
-  	if (typeof arr[i] === 'number' && arr[i]>=0) {
-  		result.push(arr[i]);
-  	} 
-  	else {
+  	// if (typeof arr[i] === 'number' && arr[i]>=0) {
+  	// 	result.push(arr[i]);
+  	// } 
+  	if (arr[i] == '--double-next' || arr[i] == '--double-prev' || arr[i] == '--discard-next' || arr[i] == '--discard-prev') {
   		if (arr[i] == '--double-next') {
         if (arr[i+1]) {
           // if (typeof arr[i+2] != 'number') {
@@ -68,6 +68,7 @@ export default function transform(arr) {
   			
   		}
   	}
+    else {result.push(arr[i]);}
    }
    console.log(result);
 return result;
