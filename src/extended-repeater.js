@@ -25,32 +25,26 @@ export default function repeater(str, options) {
   // if ()
 
   if (options.addition) {
-  if (options.additionRepeatTimes) {
-    if (options.additionSeparator) {
-      str1 = (options.addition + options.additionSeparator).repeat(options.additionRepeatTimes).substring(0, (str1.length-options.additionSeparator.length));
+    if (options.additionRepeatTimes) {
+      if (options.additionSeparator) {
+        str1 = (options.addition + options.additionSeparator).repeat(options.additionRepeatTimes).substring(0, ((str1.length)-(options.additionSeparator.length)));
+      }
+      else str1 = (options.addition + '|').repeat(options.additionRepeatTimes).substring(0, ((str1.length)-(1)));;
     }
-    else str1 = (options.addition).repeat(options.additionRepeatTimes);
+    else str1 = options.addition;
   }
-  else str1 = options.addition;
-}
-else str1 = '';
+  else str1 = '';
 
   if (options.repeatTimes) {
-    if (options.repeatTimes == 1) {
-      options[separator] = '+';
-    }
     if (options.separator) {
       str = (str + str1 + options.separator).repeat(options.repeatTimes)
       str =  str.substring(0, ((str.length)-(options.separator.length)));
     }
     else {
-      if (options.repeatTimes == 1) {
+      // if (options.repeatTimes == 1) {
         str = (str + str1 + "+").repeat(options.repeatTimes)
     str = str.substring(0, ((str.length)-1));
       }
-      
-    }
-     
   }
   else str = str + str1;
 
